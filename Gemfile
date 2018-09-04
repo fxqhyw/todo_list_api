@@ -10,6 +10,7 @@ gem 'mini_magick'
 gem 'bcrypt'
 gem 'rack-cors'
 gem 'figaro'
+gem 'devise_token_auth'
 # gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
@@ -33,7 +34,6 @@ group :test do
   gem 'shoulda-matchers'
   gem 'factory_bot_rails'
 end
-
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
