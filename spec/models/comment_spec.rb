@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
   context 'associations' do
-    it { is_expected.to belong_to(:task) }
+    it { is_expected.to belong_to(:task).counter_cache(true) }
   end
 
   context 'validations' do
