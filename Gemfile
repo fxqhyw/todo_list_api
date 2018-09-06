@@ -7,10 +7,10 @@ gem 'rails'
 gem 'pg'
 gem 'puma'
 gem 'mini_magick'
-gem 'bcrypt'
 gem 'rack-cors'
 gem 'figaro'
 gem 'devise_token_auth'
+gem 'acts_as_list'
 # gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
