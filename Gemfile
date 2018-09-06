@@ -32,6 +32,7 @@ end
 group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
+  gem 'json_matchers'
   gem 'factory_bot_rails'
 end
 
