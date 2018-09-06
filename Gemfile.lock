@@ -51,6 +51,7 @@ GEM
       msgpack (~> 1.0)
     builder (3.2.3)
     byebug (10.0.2)
+    cancancan (2.2.0)
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
@@ -215,6 +216,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_list
   bootsnap (>= 1.1.0)
+  cancancan
   database_cleaner
   devise_token_auth
   factory_bot_rails

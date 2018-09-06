@@ -11,6 +11,7 @@ gem 'rack-cors'
 gem 'figaro'
 gem 'devise_token_auth'
 gem 'acts_as_list'
+gem 'cancancan'
 # gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
