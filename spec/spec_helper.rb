@@ -1,3 +1,7 @@
+require 'json_matchers/rspec'
+
+JsonMatchers.schema_root = 'spec/support/api/schemas'
+
 RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
@@ -13,6 +17,8 @@ RSpec.configure do |config|
   end
 
   config.include FactoryBot::Syntax::Methods
+
+  config.include Rack::Test::Methods
 
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`

@@ -6,13 +6,12 @@ ruby '2.5.1'
 gem 'rails'
 gem 'pg'
 gem 'puma'
-gem 'mini_magick'
 gem 'rack-cors'
 gem 'figaro'
 gem 'devise_token_auth'
 gem 'acts_as_list'
 gem 'cancancan'
-# gem 'jbuilder', '~> 2.5'
+gem 'jbuilder'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
