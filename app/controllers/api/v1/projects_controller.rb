@@ -6,6 +6,7 @@ module Api::V1
     respond_to :json
 
     def index
+      respond_with @projects
     end
 
     def show
