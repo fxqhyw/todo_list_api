@@ -9,8 +9,22 @@ module Api::V1
       respond_with @projects
     end
 
+    def create
+      if @project.save
+        respond_with @project, status: :created
+      else
+        render json: @project.errors, status: :unprocessable_entity
+      end
+    end
+
     def show
       respond_with @project
+    end
+
+    private
+
+    def project_params
+      params.require(:data).permit(:name)
     end
   end
 end

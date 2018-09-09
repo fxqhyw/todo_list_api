@@ -1,0 +1,22 @@
+{ 
+  "type": "object",
+  "required": ["data"],
+  "properties":{
+    "data": { 
+      "type": "object",
+      "required": [
+        "attributes",
+        "relationships",
+        "id",
+        "links",
+        "type"],
+      "properties":  { 
+        "attributes": {"$ref": "file:/project_partial.json#/properties/attributes" },
+        "relationships": {"$ref": "file:/project_partial.json#/properties/relationships" },
+        "id": {"$ref": "file:/project_partial.json#/properties/id" },
+        "links": {"$ref": "file:/project_partial.json#/properties/links" },
+        "type": {"$ref": "file:/project_partial.json#/properties/type" }
+      }
+    }
+  }
+}
