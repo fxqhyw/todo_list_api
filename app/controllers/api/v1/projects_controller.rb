@@ -10,21 +10,28 @@ module Api::V1
     end
 
     def create
-      if @project.save
-        respond_with @project, status: :created
-      else
-        render json: @project.errors, status: :unprocessable_entity
-      end
+      return respond_with @project, status: :created if @project.save
+      render json: @project.errors, status: :unprocessable_entity
     end
 
     def show
       respond_with @project
     end
 
+    def update
+      return respond_with @project, status: :created if @project.update(project_params)
+      render json: @project.errors, status: :unprocessable_entity
+    end
+
+    def destroy
+      @project.destroy
+      head :no_content
+    end
+
     private
 
     def project_params
-      params.require(:data).permit(:name)
+      params.require(:data).require(:attributes).permit(:name)
     end
   end
 end
