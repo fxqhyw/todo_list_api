@@ -1,5 +1,5 @@
 { 
-  "id": "file/task_partial.json#",
+  "id": "file:/task_partial.json#",
   "type": "object",
   "required": [
     "attributes",
@@ -19,7 +19,7 @@
       "properties": {
         "commentsCount": { "type": "integer"},
         "done": { "type": "boolean"},
-        "dueDate": { "type": "string" },
+        "dueDate": { "type": ["string", "null"] },
         "name": { "type": "string" },
         "position": { "type": "integer" }
       }
