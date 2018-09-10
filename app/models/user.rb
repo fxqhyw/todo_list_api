@@ -4,8 +4,4 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   has_many :projects, dependent: :destroy
-
-  def tokens_has_json_column_type?
-    false
-  end
 end

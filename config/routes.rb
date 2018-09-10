@@ -11,8 +11,8 @@ Rails.application.routes.draw do
       resources :tasks, only: %i[show update destroy] do
         resources :comments, only: %i[index create destroy]
         member do
-          put :complete
-          put :position
+          patch :complete
+          patch :position
         end
       end
     end
