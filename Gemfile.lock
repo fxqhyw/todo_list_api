@@ -44,6 +44,8 @@ GEM
       tzinfo (~> 1.1)
     acts_as_list (0.9.16)
       activerecord (>= 3.0)
+    apipie-rails (0.5.10)
+      rails (>= 4.1)
     arel (9.0.0)
     ast (2.4.0)
     bcrypt (3.1.12)
@@ -218,6 +220,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_list
+  apipie-rails
   bootsnap (>= 1.1.0)
   cancancan
   database_cleaner
