@@ -6,7 +6,7 @@ module Api::V1
     respond_to :json
 
     resource_description do
-      short 'Manage of projects which belongs to current User'
+      short 'Manage of projects which belongs to current user'
       error code: 401, desc: 'Unauthorized'
       error code: 422, desc: 'Unprocessable entity'
       formats ['json']

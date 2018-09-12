@@ -209,7 +209,7 @@ RSpec.describe 'Tasks management', type: :request do
   end
 
   describe 'PATCH /api/v1/tasks/:id/position' do
-    let(:params) do
+    let(:valid_params) do
       {
         "data": {
           "type": "string",
@@ -219,23 +219,51 @@ RSpec.describe 'Tasks management', type: :request do
         }
       }
     end
+
+    let(:invalid_params) do
+      {
+        "data": {
+          "type": "string",
+          "attributes": {
+            "position": 'not a number'
+          }
+        }
+      }
+    end
     context 'unauthorized user' do
       it 'returns http status 401 :unauthorized' do
-        patch position_api_v1_task_path(task), params: params
+        patch position_api_v1_task_path(task), params: valid_params
         expect(response).to have_http_status 401
       end
     end
 
     context 'authorized user' do
-      before { patch position_api_v1_task_path(task), headers: auth_headers, params: params }
-      it 'updates task position field' do
-        task.reload
-        expect(task.position).to eq(3)
+      context 'valid params' do
+        before { patch position_api_v1_task_path(task), headers: auth_headers, params: valid_params }
+
+        it 'updates task position field' do
+          task.reload
+          expect(task.position).to eq(3)
+        end
+
+        it 'returns the updated task' do
+          expect(response).to have_http_status 201
+          expect(response).to match_response_schema('tasks/task')
+        end
       end
 
-      it 'returns the updated task' do
-        expect(response).to have_http_status 201
-        expect(response).to match_response_schema('tasks/task')
+      context 'invalid params' do
+        before { patch position_api_v1_task_path(task), headers: auth_headers, params: invalid_params }
+
+        it 'updates task position field to default value 1' do
+          task.reload
+          expect(task.position).to eq(1)
+        end
+
+        it 'returns the updated task' do
+          expect(response).to have_http_status 201
+          expect(response).to match_response_schema('tasks/task')
+        end
       end
     end
   end
