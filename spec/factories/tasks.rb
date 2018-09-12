@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :task do
     name { FFaker::Lorem.unique.word }
-    due_date { Time.zone.tomorrow }
+    deadline { nil }
+    done { false }
     project
   end
 end

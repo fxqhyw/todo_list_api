@@ -3,7 +3,7 @@ class CreateTasks < ActiveRecord::Migration[5.2]
     create_table :tasks do |t|
       t.string :name
       t.boolean :done
-      t.date :due_date
+      t.date :deadline
       t.integer :position
       t.belongs_to :project, foreign_key: true
 

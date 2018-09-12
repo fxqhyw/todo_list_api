@@ -146,7 +146,7 @@ RSpec.describe 'Projects management', type: :request do
     end
 
     context 'authorized user' do
-      it 'destroys project in the database' do
+      it 'destroys the project in the database' do
         project
         expect {
           delete api_v1_project_path(project), headers: auth_headers
@@ -154,7 +154,6 @@ RSpec.describe 'Projects management', type: :request do
       end
 
       it 'returns http status 204 :no_content' do
-        project
         delete api_v1_project_path(project), headers: auth_headers
         expect(response).to have_http_status 204
       end

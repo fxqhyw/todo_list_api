@@ -1,7 +1,7 @@
 json.attributes do
   json.commentsCount task.comments_count
   json.done task.done
-  json.dueDate task.due_date
+  json.deadline task.deadline
   json.name task.name
   json.position task.position
 end

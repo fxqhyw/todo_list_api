@@ -29,6 +29,7 @@ module Api::V1
     param_group :project
     def create
       return respond_with @project, status: :created if @project.save
+
       render json: @project.errors, status: :unprocessable_entity
     end
 
@@ -42,6 +43,7 @@ module Api::V1
     param_group :project
     def update
       return respond_with @project, status: :created if @project.update(project_params)
+
       render json: @project.errors, status: :unprocessable_entity
     end
 

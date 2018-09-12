@@ -12,14 +12,14 @@
       "required": [
         "commentsCount",
         "done",
-        "dueDate",
+        "deadline",
         "name",
         "position"
       ],
       "properties": {
         "commentsCount": { "type": "integer"},
         "done": { "type": "boolean"},
-        "dueDate": { "type": ["string", "null"] },
+        "deadline": { "type": ["string", "null"] },
         "name": { "type": "string" },
         "position": { "type": "integer" }
       }
