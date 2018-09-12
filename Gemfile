@@ -13,6 +13,7 @@ gem 'acts_as_list'
 gem 'cancancan'
 gem 'jbuilder'
 gem 'apipie-rails'
+gem 'aws-sdk-s3', require: false
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do

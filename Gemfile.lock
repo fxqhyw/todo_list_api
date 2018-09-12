@@ -48,6 +48,21 @@ GEM
       rails (>= 4.1)
     arel (9.0.0)
     ast (2.4.0)
+    aws-eventstream (1.0.1)
+    aws-partitions (1.104.0)
+    aws-sdk-core (3.27.0)
+      aws-eventstream (~> 1.0)
+      aws-partitions (~> 1.0)
+      aws-sigv4 (~> 1.0)
+      jmespath (~> 1.0)
+    aws-sdk-kms (1.9.0)
+      aws-sdk-core (~> 3, >= 3.26.0)
+      aws-sigv4 (~> 1.0)
+    aws-sdk-s3 (1.19.0)
+      aws-sdk-core (~> 3, >= 3.26.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.0)
+    aws-sigv4 (1.0.3)
     bcrypt (3.1.12)
     bootsnap (1.3.2)
       msgpack (~> 1.0)
@@ -86,6 +101,7 @@ GEM
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
+    jmespath (1.4.0)
     json_matchers (0.10.0)
       json_schema
     json_schema (0.19.1)
@@ -221,6 +237,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_list
   apipie-rails
+  aws-sdk-s3
   bootsnap (>= 1.1.0)
   cancancan
   database_cleaner
