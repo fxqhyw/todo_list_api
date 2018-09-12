@@ -9,12 +9,13 @@ Rails.application.routes.draw do
         resources :tasks, only: %i[index create]
       end
       resources :tasks, only: %i[show update destroy] do
-        resources :comments, only: %i[index create destroy]
+        resources :comments, only: %i[index create]
         member do
           patch :complete
           patch :position
         end
       end
+      resources :comments, only: %i[destroy]
     end
   end
 end

@@ -9,8 +9,10 @@ class Comment < ApplicationRecord
 
   def image_validation
     return unless image.attached?
+
     errors.add(:image, 'must be a JPEG or PNG') unless image.content_type.in?(%w[image/jpeg image/png])
     return if image.blob.byte_size < 10_000_000
+
     image.purge
     errors.add(:image, 'size must be less than 10Mb')
   end

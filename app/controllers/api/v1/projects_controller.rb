@@ -20,7 +20,7 @@ module Api::V1
       end
     end
 
-    api :GET, '/v1/projects', 'Returns all current user projects'
+    api :GET, '/v1/projects', 'Returns list of current user projects'
     def index
       respond_with @projects
     end

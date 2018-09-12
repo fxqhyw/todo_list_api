@@ -14,13 +14,13 @@ module Api::V1
       formats ['json']
     end
 
-    api :GET, '/v1/projects/:project_id/tasks', 'Returns all project tasks by project_id'
+    api :GET, '/v1/projects/:project_id/tasks', 'Returns list of project tasks by project_id'
     param :project_id, :number, required: true
     def index
       respond_with @tasks
     end
 
-    api :POST, '/v1/projects/:project_id/tasks', 'Returns all project tasks by project_id'
+    api :POST, '/v1/projects/:project_id/tasks', 'Creates new project task and returns it'
     param :project_id, :number, required: true
     param :data, Hash, required: true do
       param :attributes, Hash, required: true do
@@ -71,7 +71,7 @@ module Api::V1
     param :id, :number, required: true
     param :data, Hash, required: true do
       param :attributes, Hash, required: true do
-        param :position, Integer, required: true
+        param :position, :number, required: true
       end
     end
     def position
