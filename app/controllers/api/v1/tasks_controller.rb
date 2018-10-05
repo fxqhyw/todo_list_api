@@ -16,25 +16,6 @@ module Api::V1
 
     api :GET, '/v1/projects/:project_id/tasks', 'Returns list of project tasks by project_id'
     param :project_id, :number, required: true
-    example <<-EOS
-      {
-        "data": [
-          {
-            "attributes": {
-              "commentsCount": 0,
-              "done": false,
-              "dueDate": null,
-              "name": "Task name",
-              "position": 0
-            },
-            "relationships": {
-              "comments": []
-            },
-            "type": "tasks"
-          }
-        ]
-      }
-    EOS
     def index
       respond_with @tasks
     end
@@ -46,25 +27,6 @@ module Api::V1
         param :name, String, required: true
       end
     end
-    example <<-EOS
-      {
-        "data": {
-          {
-            "attributes": {
-              "commentsCount": 0,
-              "done": false,
-              "dueDate": null,
-              "name": "Task name",
-              "position": 0
-            },
-            "relationships": {
-              "comments": []
-            },
-            "type": "tasks"
-          }
-        }
-      }
-    EOS
     def create
       return respond_with @task, status: :created if @task.save
 
@@ -73,25 +35,6 @@ module Api::V1
 
     api :GET, '/v1/tasks/:id', 'Returns current user task by id'
     param :id, :number, required: true
-    example <<-EOS
-      {
-        "data": {
-          {
-            "attributes": {
-              "commentsCount": 0,
-              "done": false,
-              "dueDate": null,
-              "name": "Task name",
-              "position": 0
-            },
-            "relationships": {
-              "comments": []
-            },
-            "type": "tasks"
-          }
-        }
-      }
-    EOS
     def show
       respond_with @task
     end
@@ -104,25 +47,6 @@ module Api::V1
         param :deadline, String
       end
     end
-    example <<-EOS
-      {
-        "data": {
-          {
-            "attributes": {
-              "commentsCount": 0,
-              "done": false,
-              "dueDate": null,
-              "name": "Task name",
-              "position": 0
-            },
-            "relationships": {
-              "comments": []
-            },
-            "type": "tasks"
-          }
-        }
-      }
-    EOS
     def update
       return respond_with @task, status: :created if @task.update(task_params_with_deadline)
 
@@ -139,25 +63,6 @@ module Api::V1
 
     api :PATCH, '/v1/tasks/:id/complete', 'Updates task done field to true by id'
     param :id, :number, required: true
-    example <<-EOS
-      {
-        "data": {
-          {
-            "attributes": {
-              "commentsCount": 0,
-              "done": false,
-              "dueDate": null,
-              "name": "Task name",
-              "position": 0
-            },
-            "relationships": {
-              "comments": []
-            },
-            "type": "tasks"
-          }
-        }
-      }
-    EOS
     def complete
       @task.update(done: true)
       respond_with @task, status: :created
@@ -170,25 +75,6 @@ module Api::V1
         param :position, :number, required: true
       end
     end
-    example <<-EOS
-      {
-        "data": {
-          {
-            "attributes": {
-              "commentsCount": 0,
-              "done": false,
-              "dueDate": null,
-              "name": "Task name",
-              "position": 0
-            },
-            "relationships": {
-              "comments": []
-            },
-            "type": "tasks"
-          }
-        }
-      }
-    EOS
     def position
       @task.insert_at(position_params[:position].to_i)
       respond_with @task, status: :created

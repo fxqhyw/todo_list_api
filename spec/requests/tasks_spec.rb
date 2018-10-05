@@ -8,14 +8,14 @@ RSpec.describe 'Tasks management', type: :request do
 
   describe 'GET /api/v1/projects/:project_id/tasks' do
     context 'unauthorized user' do
-      it 'returns http status 401 :unauthorized' do
+      it 'returns http status 401 :unauthorized', :show_in_doc do
         get api_v1_project_tasks_path(project)
         expect(response).to have_http_status 401
       end
     end
 
     context 'authorized user' do
-      it 'returns an array of project tasks' do
+      it 'returns an array of project tasks', :show_in_doc do
         create_list(:task, 3, project: project)
         get api_v1_project_tasks_path(project), headers: auth_headers
         expect(response).to have_http_status 200
@@ -46,7 +46,7 @@ RSpec.describe 'Tasks management', type: :request do
       }
     end
     context 'unauthorized user' do
-      it 'returns http status 401 :unauthorized' do
+      it 'returns http status 401 :unauthorized', :show_in_doc do
         post api_v1_project_tasks_path(project), params: valid_params
         expect(response).to have_http_status 401
       end
@@ -60,7 +60,7 @@ RSpec.describe 'Tasks management', type: :request do
           }.to change(Task, :count).from(0).to(1)
         end
 
-        it 'returns the created task' do
+        it 'returns the created task', :show_in_doc do
           post api_v1_project_tasks_path(project), headers: auth_headers, params: valid_params
           expect(response).to have_http_status 201
           expect(response).to match_response_schema('tasks/task')
@@ -74,7 +74,7 @@ RSpec.describe 'Tasks management', type: :request do
           }.not_to change(Task, :count)
         end
 
-        it 'returns http status 422 :unprocessable_entity' do
+        it 'returns http status 422 :unprocessable_entity', :show_in_doc do
           post api_v1_project_tasks_path(project), headers: auth_headers, params: invalid_params
           expect(response).to have_http_status 422
         end
@@ -84,14 +84,14 @@ RSpec.describe 'Tasks management', type: :request do
 
   describe 'GET /api/v1/tasks/:id' do
     context 'unauthorized user' do
-      it 'returns http status 401 :unauthorized' do
+      it 'returns http status 401 :unauthorized', :show_in_doc do
         get api_v1_task_path(task)
         expect(response).to have_http_status 401
       end
     end
 
     context 'authorized user' do
-      it 'returns the project task by id' do
+      it 'returns the project task by id', :show_in_doc do
         get api_v1_task_path(task), headers: auth_headers
         expect(response).to have_http_status 200
         expect(response).to match_response_schema('tasks/task')
@@ -123,7 +123,7 @@ RSpec.describe 'Tasks management', type: :request do
       }
     end
 
-    context 'unauthorized user' do
+    context 'unauthorized user', :show_in_doc do
       it 'returns http status 401 :unauthorized' do
         patch api_v1_task_path(task), params: valid_params
         expect(response).to have_http_status 401
@@ -140,7 +140,7 @@ RSpec.describe 'Tasks management', type: :request do
           expect(task.deadline).to eq(Date.tomorrow)
         end
 
-        it 'returns the updated task' do
+        it 'returns the updated task', :show_in_doc do
           expect(response).to have_http_status 201
           expect(response).to match_response_schema('tasks/task')
         end
@@ -154,7 +154,7 @@ RSpec.describe 'Tasks management', type: :request do
           expect(task.deadline).not_to eq('someday')
         end
 
-        it 'returns http status 422 :unprocessable_entity' do
+        it 'returns http status 422 :unprocessable_entity', :show_in_doc do
           expect(response).to have_http_status 422
         end
       end
@@ -163,7 +163,7 @@ RSpec.describe 'Tasks management', type: :request do
 
   describe 'DELETE /api/v1/tasks/:id' do
     context 'unauthorized user' do
-      it 'returns http status 401 :unauthorized' do
+      it 'returns http status 401 :unauthorized', :show_in_doc do
         delete api_v1_task_path(task)
         expect(response).to have_http_status 401
       end
@@ -177,7 +177,7 @@ RSpec.describe 'Tasks management', type: :request do
         }.to change(Task, :count).from(1).to(0)
       end
 
-      it 'returns http status 204 :no_content' do
+      it 'returns http status 204 :no_content', :show_in_doc do
         delete api_v1_task_path(task), headers: auth_headers
         expect(response).to have_http_status 204
       end
@@ -186,7 +186,7 @@ RSpec.describe 'Tasks management', type: :request do
 
   describe 'PATCH /api/v1/tasks/:id/complete' do
     context 'unauthorized user' do
-      it 'returns http status 401 :unauthorized' do
+      it 'returns http status 401 :unauthorized', :show_in_doc do
         patch complete_api_v1_task_path(task)
         expect(response).to have_http_status 401
       end
@@ -201,7 +201,7 @@ RSpec.describe 'Tasks management', type: :request do
         expect(task.done).to be_truthy
       end
 
-      it 'returns the updated task' do
+      it 'returns the updated task', :show_in_doc do
         expect(response).to have_http_status 201
         expect(response).to match_response_schema('tasks/task')
       end
@@ -220,7 +220,7 @@ RSpec.describe 'Tasks management', type: :request do
       }
     end
     context 'unauthorized user' do
-      it 'returns http status 401 :unauthorized' do
+      it 'returns http status 401 :unauthorized', :show_in_doc do
         patch position_api_v1_task_path(task), params: params
         expect(response).to have_http_status 401
       end
@@ -234,7 +234,7 @@ RSpec.describe 'Tasks management', type: :request do
         expect(task.position).to eq(3)
       end
 
-      it 'returns the updated task' do
+      it 'returns the updated task', :show_in_doc do
         expect(response).to have_http_status 201
         expect(response).to match_response_schema('tasks/task')
       end

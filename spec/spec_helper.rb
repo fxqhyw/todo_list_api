@@ -1,4 +1,6 @@
 require 'json_matchers/rspec'
+require 'database_cleaner'
+require 'factory_bot_rails'
 
 JsonMatchers.schema_root = 'spec/support/api/schemas'
 

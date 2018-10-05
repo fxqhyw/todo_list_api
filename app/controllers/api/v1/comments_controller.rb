@@ -16,19 +16,6 @@ module Api::V1
 
     api :GET, '/v1/tasks/:task_id/comments', 'Returns list of task comment by task_id'
     param :task_id, :number, required: true
-    example <<-EOS
-      {
-        "data": [
-          {
-            "attributes": {
-              "body": "New awesome comment",
-              "image": null
-            },
-            "type": "comments"
-          }
-        ]
-      }
-    EOS
     def index
       respond_with @comments
     end
@@ -41,17 +28,6 @@ module Api::V1
         param :image, String, allow_blank: true
       end
     end
-    example <<-EOS
-      {
-        "data": {
-          "attributes": {
-            "body": "New awesome comment!",
-            "image": null
-          },
-          "type": "comments"
-        }
-      }
-    EOS
     def create
       return respond_with @comment, status: :created if @comment.save
 
@@ -60,7 +36,6 @@ module Api::V1
 
     api :DELETE, '/v1/comments/:id', 'Destroy current user comment by id'
     param :id, :number, required: true
-    example 'Returns nothing'
     def destroy
       @comment.destroy
       head :no_content

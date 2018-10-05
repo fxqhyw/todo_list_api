@@ -29,14 +29,14 @@ RSpec.describe 'Projects management', type: :request do
     before { create_list(:project, 3, user: user) }
 
     context 'unauthorized user' do
-      it 'returns http status 401 :unauthorized' do
+      it 'returns http status 401 :unauthorized', :show_in_doc do
         get api_v1_projects_path
         expect(response).to have_http_status 401
       end
     end
 
     context 'authorized user' do
-      it 'returns an array of user projects' do
+      it 'returns an array of user projects', :show_in_doc do
         get api_v1_projects_path, headers: auth_headers
         expect(response).to have_http_status 200
         expect(response).to match_response_schema('projects/projects')
@@ -46,7 +46,7 @@ RSpec.describe 'Projects management', type: :request do
 
   describe 'POST /api/v1/projects' do
     context 'unauthorized user' do
-      it 'returns http status 401 unauthorized' do
+      it 'returns http status 401 unauthorized', :show_in_doc do
         post api_v1_projects_path
         expect(response).to have_http_status 401
       end
@@ -60,7 +60,7 @@ RSpec.describe 'Projects management', type: :request do
           }.to change(Project, :count).from(0).to(1)
         end
 
-        it 'returns the created project' do
+        it 'returns the created project', :show_in_doc do
           post api_v1_projects_path, params: valid_params, headers: auth_headers
           expect(response).to have_http_status 201
           expect(response).to match_response_schema('projects/project')
@@ -74,7 +74,7 @@ RSpec.describe 'Projects management', type: :request do
           }.not_to change(Project, :count)
         end
 
-        it 'returns http status 422 :unprocessable_entity' do
+        it 'returns http status 422 :unprocessable_entity', :show_in_doc do
           post api_v1_projects_path, params: invalid_params, headers: auth_headers
           expect(response).to have_http_status 422
         end
@@ -84,14 +84,14 @@ RSpec.describe 'Projects management', type: :request do
 
   describe 'GET /api/v1/projects/:id' do
     context 'unauthorized user' do
-      it 'returns http status 401 :unauthorized' do
+      it 'returns http status 401 :unauthorized', :show_in_doc do
         get api_v1_project_path(project)
         expect(response).to have_http_status 401
       end
     end
 
     context 'authorized user' do
-      it 'returns a user project by id' do
+      it 'returns a user project by id', :show_in_doc do
         get api_v1_project_path(project), headers: auth_headers
         expect(response).to have_http_status 200
         expect(response).to match_response_schema('projects/project')
@@ -101,7 +101,7 @@ RSpec.describe 'Projects management', type: :request do
 
   describe 'PATCH /api/v1/projects/:id' do
     context 'unauthorized user' do
-      it 'returns http status 401 :unauthorized' do
+      it 'returns http status 401 :unauthorized', :show_in_doc do
         patch api_v1_project_path(project), params: valid_params
         expect(response).to have_http_status 401
       end
@@ -116,7 +116,7 @@ RSpec.describe 'Projects management', type: :request do
           expect(project.name).to eq('valid name')
         end
 
-        it 'returns the updated project' do
+        it 'returns the updated project', :show_in_doc do
           expect(response).to have_http_status 201
           expect(response).to match_response_schema('projects/project')
         end
@@ -130,7 +130,7 @@ RSpec.describe 'Projects management', type: :request do
           expect(project.name).not_to eq('valid name')
         end
 
-        it 'returns http status 422 :unprocessable_entity' do
+        it 'returns http status 422 :unprocessable_entity', :show_in_doc do
           expect(response).to have_http_status 422
         end
       end
@@ -139,7 +139,7 @@ RSpec.describe 'Projects management', type: :request do
 
   describe 'DELETE /api/v1/projects/:id' do
     context 'unauthorized user' do
-      it 'returns http status 401 :unauthorized' do
+      it 'returns http status 401 :unauthorized', :show_in_doc do
         delete api_v1_project_path(project)
         expect(response).to have_http_status 401
       end
@@ -153,7 +153,7 @@ RSpec.describe 'Projects management', type: :request do
         }.to change(Project, :count).from(1).to(0)
       end
 
-      it 'returns http status 204 :no_content' do
+      it 'returns http status 204 :no_content', :show_in_doc do
         delete api_v1_project_path(project), headers: auth_headers
         expect(response).to have_http_status 204
       end
