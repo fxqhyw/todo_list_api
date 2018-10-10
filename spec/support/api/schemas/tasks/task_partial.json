@@ -1,0 +1,40 @@
+{ 
+  "id": "file:/task_partial.json#",
+  "type": "object",
+  "required": [
+    "attributes",
+    "relationships",
+    "type"
+  ],
+  "properties": {
+    "attributes": {
+      "type": "object",
+      "required": [
+        "commentsCount",
+        "done",
+        "deadline",
+        "name",
+        "position"
+      ],
+      "properties": {
+        "commentsCount": { "type": "integer"},
+        "done": { "type": "boolean"},
+        "deadline": { "type": ["string", "null"] },
+        "name": { "type": "string" },
+        "position": { "type": "integer" }
+      }
+    },
+    "relationships": {
+      "type": "object",
+      "required": [
+        "comments"
+      ],
+      "properties": {
+        "comments": {
+          "type": "array"
+        }
+      }
+    },
+    "type": { "type": "string" }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "file:/project_partial.json#",
+  "type": "object",
+  "required": [
+    "attributes",
+    "relationships",
+    "id",
+    "links",
+    "type"],
+  "properties": {
+    "attributes": {
+      "name": { "type": "string" }
+    },
+    "relationships": {
+      "type": "object",
+      "required": [
+        "tasks",
+        "user"
+      ],
+      "properties": {
+        "tasks": { 
+          "type": "array",
+          "items": { "$ref": "file:/task_partial.json#" }        
+        },
+        "user": { 
+          "type": "object",
+          "required": [
+            "id",
+            "email"
+          ] 
+        }
+      }
+    },
+    "id": { "type": "integer" },
+    "links": {
+      "self": { "type": "string" }
+    },
+    "type": { "type": "string" }
+  }
+}

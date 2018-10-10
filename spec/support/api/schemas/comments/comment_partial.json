@@ -1,0 +1,14 @@
+{
+  "id": "file:/comment_partial.json#",
+  "type": "object",
+  "required": [
+    "attributes",
+    "type"],
+  "properties": {
+    "attributes": {
+      "name": { "type": "string" },
+      "image": { "type": ["string", "null"] }
+    },
+    "type": { "type": "string" }
+  }
+}

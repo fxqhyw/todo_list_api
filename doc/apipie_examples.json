@@ -1,0 +1,887 @@
+{
+  "comments#create": [
+    {
+      "verb": "POST",
+      "path": "/api/v1/tasks/3/comments",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "errors": [
+          "You need to sign in or sign up before continuing."
+        ]
+      },
+      "code": 401,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/tasks/4/comments",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "data[type]=string&data[attributes][body]=Valid+comment+sentence&data[attributes][image]",
+      "response_data": {
+        "data": {
+          "attributes": {
+            "body": "Valid comment sentence",
+            "image": {
+              "name": "image",
+              "record": {
+                "id": 4,
+                "body": "Valid comment sentence",
+                "task_id": 4,
+                "created_at": "2018-10-05T14:58:46.637Z",
+                "updated_at": "2018-10-05T14:58:46.637Z"
+              },
+              "dependent": "purge_later"
+            }
+          },
+          "type": "comments"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/tasks/5/comments",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "data[type]=string&data[attributes][body]=short",
+      "response_data": {
+        "body": [
+          "is too short (minimum is 10 characters)"
+        ]
+      },
+      "code": 422,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "comments#destroy": [
+    {
+      "verb": "DELETE",
+      "path": "/api/v1/comments/5",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "errors": [
+          "You need to sign in or sign up before continuing."
+        ]
+      },
+      "code": 401,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "DELETE",
+      "path": "/api/v1/comments/6",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": null,
+      "code": 204,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "comments#index": [
+    {
+      "verb": "GET",
+      "path": "/api/v1/tasks/1/comments",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "errors": [
+          "You need to sign in or sign up before continuing."
+        ]
+      },
+      "code": 401,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/api/v1/tasks/2/comments",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "data": [
+          {
+            "attributes": {
+              "body": "Cumque vel facere sed accusantium amet nemo dolorem nostrum.",
+              "image": {
+                "name": "image",
+                "record": {
+                  "id": 1,
+                  "body": "Cumque vel facere sed accusantium amet nemo dolorem nostrum.",
+                  "task_id": 2,
+                  "created_at": "2018-10-05T14:58:46.288Z",
+                  "updated_at": "2018-10-05T14:58:46.288Z"
+                },
+                "dependent": "purge_later"
+              }
+            },
+            "type": "comments"
+          },
+          {
+            "attributes": {
+              "body": "Quam doloribus aut nesciunt animi vero ut.",
+              "image": {
+                "name": "image",
+                "record": {
+                  "id": 2,
+                  "body": "Quam doloribus aut nesciunt animi vero ut.",
+                  "task_id": 2,
+                  "created_at": "2018-10-05T14:58:46.294Z",
+                  "updated_at": "2018-10-05T14:58:46.294Z"
+                },
+                "dependent": "purge_later"
+              }
+            },
+            "type": "comments"
+          },
+          {
+            "attributes": {
+              "body": "Ex totam aut ea corporis nemo odit.",
+              "image": {
+                "name": "image",
+                "record": {
+                  "id": 3,
+                  "body": "Ex totam aut ea corporis nemo odit.",
+                  "task_id": 2,
+                  "created_at": "2018-10-05T14:58:46.297Z",
+                  "updated_at": "2018-10-05T14:58:46.297Z"
+                },
+                "dependent": "purge_later"
+              }
+            },
+            "type": "comments"
+          }
+        ]
+      },
+      "code": 200,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "projects#create": [
+    {
+      "verb": "POST",
+      "path": "/api/v1/projects",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "errors": [
+          "You need to sign in or sign up before continuing."
+        ]
+      },
+      "code": 401,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/projects",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "data[type]=string&data[attributes][name]=valid+name",
+      "response_data": {
+        "data": {
+          "attributes": {
+            "name": "valid name"
+          },
+          "relationships": {
+            "tasks": [
+
+            ],
+            "user": {
+              "id": 10,
+              "email": "melony.schmitt@waelchi.info"
+            }
+          },
+          "id": 14,
+          "links": {
+            "self": "http://www.example.com/api/v1/projects/14"
+          },
+          "type": "projects"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/projects",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "data[type]=string&data[attributes][name]=",
+      "response_data": {
+        "name": [
+          "can't be blank"
+        ]
+      },
+      "code": 422,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "projects#destroy": [
+    {
+      "verb": "DELETE",
+      "path": "/api/v1/projects/20",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "errors": [
+          "You need to sign in or sign up before continuing."
+        ]
+      },
+      "code": 401,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "DELETE",
+      "path": "/api/v1/projects/21",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": null,
+      "code": 204,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "projects#index": [
+    {
+      "verb": "GET",
+      "path": "/api/v1/projects",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "errors": [
+          "You need to sign in or sign up before continuing."
+        ]
+      },
+      "code": 401,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/api/v1/projects",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "data": [
+          {
+            "attributes": {
+              "name": "et"
+            },
+            "relationships": {
+              "tasks": [
+
+              ],
+              "user": {
+                "id": 9,
+                "email": "angelita@schinner.info"
+              }
+            },
+            "id": 11,
+            "links": {
+              "self": "http://www.example.com/api/v1/projects/11"
+            },
+            "type": "projects"
+          },
+          {
+            "attributes": {
+              "name": "ratione"
+            },
+            "relationships": {
+              "tasks": [
+
+              ],
+              "user": {
+                "id": 9,
+                "email": "angelita@schinner.info"
+              }
+            },
+            "id": 12,
+            "links": {
+              "self": "http://www.example.com/api/v1/projects/12"
+            },
+            "type": "projects"
+          },
+          {
+            "attributes": {
+              "name": "ut"
+            },
+            "relationships": {
+              "tasks": [
+
+              ],
+              "user": {
+                "id": 9,
+                "email": "angelita@schinner.info"
+              }
+            },
+            "id": 13,
+            "links": {
+              "self": "http://www.example.com/api/v1/projects/13"
+            },
+            "type": "projects"
+          }
+        ]
+      },
+      "code": 200,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "projects#show": [
+    {
+      "verb": "GET",
+      "path": "/api/v1/projects/15",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "errors": [
+          "You need to sign in or sign up before continuing."
+        ]
+      },
+      "code": 401,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/api/v1/projects/16",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "data": {
+          "attributes": {
+            "name": "esse"
+          },
+          "relationships": {
+            "tasks": [
+
+            ],
+            "user": {
+              "id": 13,
+              "email": "kortney_hermiston@green.com"
+            }
+          },
+          "id": 16,
+          "links": {
+            "self": "http://www.example.com/api/v1/projects/16"
+          },
+          "type": "projects"
+        }
+      },
+      "code": 200,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "projects#update": [
+    {
+      "verb": "PATCH",
+      "path": "/api/v1/projects/17",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "data[type]=string&data[attributes][name]=valid+name",
+      "response_data": {
+        "errors": [
+          "You need to sign in or sign up before continuing."
+        ]
+      },
+      "code": 401,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "PATCH",
+      "path": "/api/v1/projects/18",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "data[type]=string&data[attributes][name]=valid+name",
+      "response_data": {
+        "data": {
+          "attributes": {
+            "name": "valid name"
+          },
+          "relationships": {
+            "tasks": [
+
+            ],
+            "user": {
+              "id": 15,
+              "email": "marlin.barton@stoltenberg.info"
+            }
+          },
+          "id": 18,
+          "links": {
+            "self": "http://www.example.com/api/v1/projects/18"
+          },
+          "type": "projects"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "PATCH",
+      "path": "/api/v1/projects/19",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "data[type]=string&data[attributes][name]=",
+      "response_data": {
+        "name": [
+          "can't be blank"
+        ]
+      },
+      "code": 422,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "tasks#complete": [
+    {
+      "verb": "PATCH",
+      "path": "/api/v1/tasks/19/complete",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "errors": [
+          "You need to sign in or sign up before continuing."
+        ]
+      },
+      "code": 401,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "PATCH",
+      "path": "/api/v1/tasks/20/complete",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "data": {
+          "attributes": {
+            "commentsCount": 0,
+            "done": true,
+            "deadline": null,
+            "name": "dolorem",
+            "position": 3
+          },
+          "relationships": {
+            "comments": [
+
+            ]
+          },
+          "type": "tasks"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "tasks#create": [
+    {
+      "verb": "POST",
+      "path": "/api/v1/projects/24/tasks",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "data[type]=string&data[attributes][name]=valid+name",
+      "response_data": {
+        "errors": [
+          "You need to sign in or sign up before continuing."
+        ]
+      },
+      "code": 401,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/projects/25/tasks",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "data[type]=string&data[attributes][name]=valid+name",
+      "response_data": {
+        "data": {
+          "attributes": {
+            "commentsCount": 0,
+            "done": false,
+            "deadline": null,
+            "name": "valid name",
+            "position": 1
+          },
+          "relationships": {
+            "comments": [
+
+            ]
+          },
+          "type": "tasks"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/projects/26/tasks",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "data[type]=string&data[attributes][name]=",
+      "response_data": {
+        "name": [
+          "can't be blank"
+        ]
+      },
+      "code": 422,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "tasks#destroy": [
+    {
+      "verb": "DELETE",
+      "path": "/api/v1/tasks/17",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "errors": [
+          "You need to sign in or sign up before continuing."
+        ]
+      },
+      "code": 401,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "DELETE",
+      "path": "/api/v1/tasks/18",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": null,
+      "code": 204,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "tasks#index": [
+    {
+      "verb": "GET",
+      "path": "/api/v1/projects/22/tasks",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "errors": [
+          "You need to sign in or sign up before continuing."
+        ]
+      },
+      "code": 401,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/api/v1/projects/23/tasks",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "data": [
+          {
+            "attributes": {
+              "commentsCount": 0,
+              "done": false,
+              "deadline": null,
+              "name": "assumenda",
+              "position": 2
+            },
+            "relationships": {
+              "comments": [
+
+              ]
+            },
+            "type": "tasks"
+          },
+          {
+            "attributes": {
+              "commentsCount": 0,
+              "done": false,
+              "deadline": null,
+              "name": "recusandae",
+              "position": 5
+            },
+            "relationships": {
+              "comments": [
+
+              ]
+            },
+            "type": "tasks"
+          },
+          {
+            "attributes": {
+              "commentsCount": 0,
+              "done": false,
+              "deadline": null,
+              "name": "autem",
+              "position": 7
+            },
+            "relationships": {
+              "comments": [
+
+              ]
+            },
+            "type": "tasks"
+          }
+        ]
+      },
+      "code": 200,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "tasks#position": [
+    {
+      "verb": "PATCH",
+      "path": "/api/v1/tasks/21/position",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "data[type]=string&data[attributes][position]=3",
+      "response_data": {
+        "errors": [
+          "You need to sign in or sign up before continuing."
+        ]
+      },
+      "code": 401,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "PATCH",
+      "path": "/api/v1/tasks/22/position",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "data[type]=string&data[attributes][position]=3",
+      "response_data": {
+        "data": {
+          "attributes": {
+            "commentsCount": 0,
+            "done": false,
+            "deadline": null,
+            "name": "odio",
+            "position": 3
+          },
+          "relationships": {
+            "comments": [
+
+            ]
+          },
+          "type": "tasks"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "tasks#show": [
+    {
+      "verb": "GET",
+      "path": "/api/v1/tasks/12",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "errors": [
+          "You need to sign in or sign up before continuing."
+        ]
+      },
+      "code": 401,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/api/v1/tasks/13",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "data": {
+          "attributes": {
+            "commentsCount": 0,
+            "done": false,
+            "deadline": null,
+            "name": "molestiae",
+            "position": 5
+          },
+          "relationships": {
+            "comments": [
+
+            ]
+          },
+          "type": "tasks"
+        }
+      },
+      "code": 200,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "tasks#update": [
+    {
+      "verb": "PATCH",
+      "path": "/api/v1/tasks/14",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "data[type]=string&data[attributes][name]=valid+name&data[attributes][deadline]=2018-10-06",
+      "response_data": {
+        "errors": [
+          "You need to sign in or sign up before continuing."
+        ]
+      },
+      "code": 401,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "PATCH",
+      "path": "/api/v1/tasks/15",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "data[type]=string&data[attributes][name]=valid+name&data[attributes][deadline]=2018-10-06",
+      "response_data": {
+        "data": {
+          "attributes": {
+            "commentsCount": 0,
+            "done": false,
+            "deadline": "2018-10-06",
+            "name": "valid name",
+            "position": 1
+          },
+          "relationships": {
+            "comments": [
+
+            ]
+          },
+          "type": "tasks"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "PATCH",
+      "path": "/api/v1/tasks/16",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "data[type]=string&data[attributes][name]=&data[attributes][deadline]=someday",
+      "response_data": {
+        "name": [
+          "can't be blank"
+        ]
+      },
+      "code": 422,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{ 
+  "type": "object",
+  "required": ["data"],
+  "properties":{
+    "data": { 
+      "type": "object",
+      "required": [
+        "attributes",
+        "type"],
+      "properties":  { 
+        "attributes": {"$ref": "file:/comment_partial.json#/properties/attributes" },
+        "type": {"$ref": "file:/comment_partial.json#/properties/type" }
+      }
+    }
+  }
+}

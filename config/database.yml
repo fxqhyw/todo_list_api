@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= Figaro.env.database_username %>
+  password: <%= Figaro.env.database_password %>
+
+development:
+  <<: *default
+  database: todo_list_api_development
+
+test:
+  <<: *default
+  database: todo_list_api_test
+
+production:
+  <<: *default
+  database: todo_list_api_production
